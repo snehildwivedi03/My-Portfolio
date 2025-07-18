@@ -1,8 +1,9 @@
 import React, { Suspense } from "react";
-import { styles } from "../../src/index.css";
+import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import { motion } from "framer-motion";
 import { personalInfo } from "../constants";
+import CanvasLoader from "./Loader";
 
 const Hero = () => {
   return (
