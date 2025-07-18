@@ -52,7 +52,7 @@ const ComputersCanvas = () => {
     <section className="relative w-full h-screen">
       <Canvas
         shadows
-        frameloop="demand"
+        frameloop="always"
         camera={{ position: [20, 3, 5], fov: 25 }}
         gl={{ preserveDrawingBuffer: true }}
       >
