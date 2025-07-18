@@ -1,31 +1,35 @@
 import { Html, useProgress } from "@react-three/drei";
+import { useEffect } from "react";
 
-const CanvasLoader = () => {
+const CanvasLoader = ({ onFinish }) => {
   const { progress } = useProgress();
+
+  useEffect(() => {
+    if (progress >= 100 && onFinish) {
+      const timeout = setTimeout(() => {
+        onFinish();
+      }, 300); // give a smooth transition
+      return () => clearTimeout(timeout);
+    }
+  }, [progress, onFinish]);
 
   return (
     <Html
+      as="div"
       center
-      fullscreen
       style={{
-        backgroundColor: "#050816", // Dark background to avoid white flash
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        width: "100vw",
-        height: "100vh",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 50,
+        marginTop: 50,
       }}
     >
       <span className="canvas-loader"></span>
       <p
         style={{
           fontSize: 14,
-          color: "#fff",
+          color: "#888",
           fontWeight: 800,
           marginTop: 40,
         }}
