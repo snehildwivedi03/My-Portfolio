@@ -49,7 +49,7 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen">
+    <section className="relative w-full h-screen z-0">
       {isMobile ? (
         <img
           src="/mobileImg.png"
