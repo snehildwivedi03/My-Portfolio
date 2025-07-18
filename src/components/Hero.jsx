@@ -3,6 +3,16 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import { personalInfo } from "../constants"; // Make sure this file exports `personalInfo`
+import { motion } from "framer-motion";
+
+<motion.img
+  src="/mobileImg.webp"
+  alt="Mobile View"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1.2 }}
+  className="w-full h-full object-contain absolute top-0 left-0 z-0"
+/>;
 
 const Hero = () => {
   return (
