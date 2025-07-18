@@ -2,14 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
-import { personalInfo } from "../constants"; // Make sure this file exports `personalInfo`
+import { personalInfo } from "../constants";
 
 const Hero = () => {
   return (
     <section className="relative w-full h-screen mx-auto">
       {/* Intro Text */}
       <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-10`}
       >
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
@@ -22,11 +22,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 3D Computer */}
-      <ComputersCanvas />
+      {/* 3D Computer behind text */}
+      <div className="absolute inset-0 z-0">
+        <ComputersCanvas />
+      </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-32 w-full flex justify-center items-center">
+      <div className="absolute bottom-32 w-full flex justify-center items-center z-10">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div

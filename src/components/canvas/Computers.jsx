@@ -50,11 +50,12 @@ const ComputersCanvas = () => {
   return (
     <section className="relative w-full h-screen">
       <Canvas
+        frameloop="demand"
         shadows
-        frameloop="always"
-        gl={{ preserveDrawingBuffer: true }}
-        style={{ background: "#050816" }}
+        dpr={[1, 2]}
         camera={{ position: [20, 3, 5], fov: 25 }}
+        gl={{ preserveDrawingBuffer: true }}
+        style={{ background: "#050816" }} // <-- This removes white flash!
       >
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
