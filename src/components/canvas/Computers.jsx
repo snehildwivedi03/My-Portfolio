@@ -1,5 +1,5 @@
 // ComputersCanvas.jsx
-import React, { useEffect, useState, Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
@@ -42,41 +42,32 @@ const ComputersCanvas = () => {
     };
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
+
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
 
   return (
-    <section className="relative w-full h-screen mx-auto">
-      {isMobile ? (
-        <div className="w-full h-full flex justify-center items-center">
-          <img
-            src="/mobileImg.png"
-            alt="Mobile Fallback"
-            className="object-contain w-[80%] h-auto"
+    <section className="relative w-full h-screen">
+      <Canvas
+        shadows
+        frameloop="always"
+        camera={{ position: [20, 3, 5], fov: 25 }}
+        gl={{ preserveDrawingBuffer: true }}
+      >
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
           />
-        </div>
-      ) : (
-        <Canvas
-          shadows
-          frameloop="always"
-          camera={{ position: [20, 3, 5], fov: 25 }}
-          gl={{ preserveDrawingBuffer: true }}
-        >
-          <Suspense fallback={<CanvasLoader />}>
-            <OrbitControls
-              enableZoom={false}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
-            />
-            <Computers isMobile={isMobile} />
-          </Suspense>
-          <Preload all />
-        </Canvas>
-      )}
+          <Computers isMobile={isMobile} />
+        </Suspense>
+        <Preload all />
+      </Canvas>
     </section>
   );
 };
 
-export default ComputersCanvas;
+export default ComputersCanvas; // ComputersCanvas.jsx
