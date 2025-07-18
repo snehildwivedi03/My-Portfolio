@@ -6,7 +6,7 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import emailjs from "@emailjs/browser";
 import { personalInfo, publicUrls } from "../constants";
-import Modal from "./Modal";
+import Modal from "./Modal"; // we'll update this too
 
 const Contact = () => {
   const formRef = useRef();
@@ -47,33 +47,30 @@ const Contact = () => {
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       )
-      .then(
-        () => {
-          setModalContent({
-            title: "Success!",
-            message: "Thank you. I will get back to you as soon as possilbe.",
-            buttonText: "Ok",
-          });
-          setIsModalVisible(true);
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          console.log("Error while sending mail ", error);
-          setModalContent({
-            title: "Error!",
-            message: "Ahh, something went wrong. Please try again.",
-            buttonText: "Retry",
-          });
-          setIsError(true);
-          setIsModalVisible(true);
-        }
-      )
-      .finally(() => setLoading(false));
+      .then(() => {
+        setModalContent({
+          title: "Message Sent!",
+          message: "Thank you for reaching out. I'll get back to you soon.",
+          buttonText: "Close",
+        });
+        setIsModalVisible(true);
+        setIsError(false);
+        // Reset form here
+        setForm({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("Email send error:", error);
+        setModalContent({
+          title: "❌ Error Sending",
+          message: "Something went wrong. Please try again later.",
+          buttonText: "Retry",
+        });
+        setIsModalVisible(true);
+        setIsError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -119,6 +116,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="What's your good name?"
                 className="bg-tertiary py-4 px-6 text-white placeholder:text-secondary rounded-lg outline-none border-none font-medium"
+                required
               />
             </label>
 
@@ -131,6 +129,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="What's your web address?"
                 className="bg-tertiary py-4 px-6 text-white placeholder:text-secondary rounded-lg outline-none border-none font-medium"
+                required
               />
             </label>
 
@@ -141,8 +140,9 @@ const Contact = () => {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="What's you want to say?"
+                placeholder="What do you want to say?"
                 className="bg-tertiary py-4 px-6 text-white placeholder:text-secondary rounded-lg outline-none border-none font-medium"
+                required
               />
             </label>
 
@@ -162,6 +162,7 @@ const Contact = () => {
           <EarthCanvas />
         </motion.div>
       </div>
+
       {isModalVisible && (
         <Modal
           title={modalContent.title}

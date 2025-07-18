@@ -11,7 +11,7 @@ const HireMe = () => {
       whileHover={{ scale: 1.1 }}
       className="fixed left-4 bottom-4 lg:flex hidden justify-center items-center"
     >
-      <div className="w-24 h-24 relative">
+      {/* <div className="w-24 h-24 relative">
         <div className="border-t-4 border-blue-500 border-solid rounded-full animate-spin absolute inset-0"></div>
         <a
           href={`mailto:${personalInfo.email}`}
@@ -20,7 +20,7 @@ const HireMe = () => {
         >
           <span className="text-white text-[14px] p-1 font-bold">Hire Me</span>
         </a>
-      </div>
+      </div> */}
     </motion.div>
   );
 };

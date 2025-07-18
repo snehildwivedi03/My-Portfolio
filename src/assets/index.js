@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import logo from "./logo.png";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -8,6 +8,8 @@ import linkedIn from "./linkedIn.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 import demo from "./demo.png";
+import leetcode from "./leetcode.png";
+import gfg from "./gfg.png";
 
 import css from "./tech/css.png";
 import git from "./tech/git.png";
@@ -59,12 +61,14 @@ export {
   nextJs,
   angular,
   redux,
+  gfg,
   tailwind,
   typescript,
   crmnext,
   nickelfox,
   newgen,
   skillrisers,
+  leetcode,
   proximus,
   aptihealthWeb,
   aptihealthApp,

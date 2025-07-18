@@ -30,6 +30,8 @@ import {
   rollApp,
   linkedIn,
   github,
+  leetcode,
+  gfg,
 } from "../assets";
 
 const navigationPaths = {
@@ -56,19 +58,19 @@ export const navLinks = [
 
 const services = [
   {
-    title: "React Development",
+    title: "Full Stack Development",
     icon: web,
   },
   {
-    title: "Problem Solving",
+    title: "C++ Programming",
     icon: backend,
   },
   {
-    title: "C++ Programming",
+    title: "Problem Solving",
     icon: mobile,
   },
   {
-    title: "JavaScript Development",
+    title: "Project Building",
     icon: creator,
   },
 ];
@@ -161,11 +163,37 @@ const experiences = [
       "Improved overall article performance by refining structure, meta tags, and visual formatting.",
     ],
   },
+  {
+    title: "Leetcode Profile",
+    company_name: "Leetcode",
+    company_website: "https://leetcode.com/u/snehildwivedi03/",
+    icon: leetcode, // Replace with actual icon variable if needed
+    iconBg: "#D1E8FF",
+    date: "Present",
+    points: [
+      "Solved 150+ LeetCode problems covering arrays, strings, and dynamic programming.",
+      "Sharpened algorithmic thinking through daily challenges and consistent problem-solving.",
+      "Applied refined DSA knowledge to enhance project efficiency and edge case handling.",
+    ],
+  },
+  {
+    title: "GeeksForGeeks Profile",
+    company_name: "GeeksForGeeks",
+    company_website: "https://leetcode.com/u/snehildwivedi03/",
+    icon: gfg, // Replace with actual icon variable if needed
+    iconBg: "#D1E8FF",
+    date: "Present",
+    points: [
+      "Solved 300+ GeeksforGeeks problems spanning key topics like data structures, algorithms, and system design.",
+      "Ranked 7th in institution leaderboard through consistent performance and problem-solving depth.",
+      "Leveraged GFG practice to strengthen real-world coding skills and solution scalability",
+    ],
+  },
 ];
 
 const projects = [
   {
-    name: "Aptihealth Web",
+    name: "SocialEcho",
     description:
       "Revolutionizing mental healthcare in New York State with a user-friendly platform for personalized therapy and progress tracking. Provides the digital gateway to comprehensive behavioral healthcare.",
     tags: [
@@ -207,7 +235,7 @@ const projects = [
     hosted_link: "https://apps.apple.com/us/app/aptihealth/id1477170874",
   },
   {
-    name: "Zeal Web",
+    name: "Javascript Portfolio",
     description:
       "The Zeal website elevates the experience of enjoying activities with trusted friends, fostering connections and making every interaction exciting.",
     tags: [
@@ -227,71 +255,6 @@ const projects = [
     image: zealWeb,
     hosted_link: "https://getzeal.co/",
   },
-  {
-    name: "Zeal App",
-    description:
-      "Discover a world of activities with friends through Zeal, an engaging platform. Create events, post updates, chat, and enjoy in-person activities hassle-free. Boost your social life with Zeal!",
-    tags: [
-      {
-        name: "react-native",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "sendgrid",
-        color: "green-text-gradient",
-      },
-      {
-        name: "typescript",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: zealApp,
-    hosted_link:
-      "https://apps.apple.com/us/app/zeal-activities-with-friends/id6446917140",
-  },
-  {
-    name: "Roll Web",
-    description:
-      "The Roll website is the gateway to the future of decentralized communities and digital assets. It allows users to seamlessly earn, redeem, send, and trade social tokens.",
-    tags: [
-      {
-        name: "reactjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "green-text-gradient",
-      },
-      {
-        name: "formik",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: rollWeb,
-    hosted_link: "https://app.tryroll.com/",
-  },
-  {
-    name: "Roll App",
-    description:
-      "Join the future of decentralized communities and digital assets with Roll. Earn, redeem, send, and trade social tokens on this innovative platform. Experience transparent transactions and captivating UI design.",
-    tags: [
-      {
-        name: "react-native-web",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "green-text-gradient",
-      },
-      {
-        name: "storybook",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: rollApp,
-    hosted_link:
-      "https://play.google.com/store/apps/details?id=com.roll&hl=en_GB",
-  },
 ];
 
 const personalInfo = {
@@ -299,7 +262,7 @@ const personalInfo = {
   fullName: "Snehil Dwivedi",
   email: "snehil323@gmail.com",
   role: "Software Developer",
-  about: `I'm a skilled software developer with experience in JavaScript and C++, and expertise in frameworks like React.js and Three.js, along with strong command of HTML, CSS, Bootstrap, and Tailwind CSS. I'm a well-organized person who believes in planning before doing, which helps me write clean and efficient code. I’m a quick learner who collaborates closely with clients to build scalable, user-friendly solutions that solve real-world problems. Let’s work together to execute our ideas!`,
+  about: `I'm a skilled software developer with experience in JavaScript and C++, and expertise in frameworks like React.js and Three.js, along with strong command of HTML, CSS, Bootstrap, and Tailwind CSS. I'm a well-organized person who believes in planning before doing, which helps me write clean and efficient code. I’m a quick learner who enjoys constant learning and taking new challenges.`,
   projectsIntro: `Following projects showcases my skills and experience through
   real-world examples of my work. Each project is briefly described with
   live demos. It reflects my ability to solve complex problems, work
@@ -312,12 +275,12 @@ const publicUrls = {
   socialProfiles: {
     linkedin: {
       title: "linkedin",
-      link: "https://www.linkedin.com/in/shridharrai/",
+      link: "https://www.linkedin.com/in/snehil-dwivedi-/",
       icon: linkedIn,
     },
     github: {
       title: "github",
-      link: "https://github.com/shridharrai",
+      link: "https://github.com/snehildwivedi03",
       icon: github,
     },
   },
