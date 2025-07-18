@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
-import CanvasLoader from "../CanvasLoader";
+import CanvasLoader from "../Loader";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 const Earth = () => {
