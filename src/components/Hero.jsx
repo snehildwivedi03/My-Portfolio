@@ -36,7 +36,7 @@ const Hero = () => {
       {/* Show either image (mobile) or 3D model (desktop) */}
       {isMobile ? (
         <motion.img
-          src="../../../public/mobileImg.png"
+          src="../../public/mobileImg.png"
           alt="Mobile Illustration"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
