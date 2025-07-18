@@ -6,15 +6,11 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import emailjs from "@emailjs/browser";
 import { personalInfo, publicUrls } from "../constants";
-import Modal from "./Modal"; // we'll update this too
+import Modal from "./Modal";
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -35,8 +31,8 @@ const Contact = () => {
 
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: personalInfo.fullName,
@@ -45,30 +41,28 @@ const Contact = () => {
           message: form.message,
           reply_to: form.email,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         setModalContent({
-          title: "Message Sent!",
-          message: "Thank you for reaching out. I'll get back to you soon.",
+          title: "✅ Message Sent!",
+          message: "Thanks for contacting me. I'll get back to you shortly.",
           buttonText: "Close",
         });
-        setIsModalVisible(true);
         setIsError(false);
-        // Reset form here
-        setForm({ name: "", email: "", message: "" });
+        setIsModalVisible(true);
+        setForm({ name: "", email: "", message: "" }); // Reset form
       })
       .catch((error) => {
-        console.error("Email send error:", error);
+        console.error("EmailJS Error:", error);
         setModalContent({
-          title: "❌ Error Sending",
+          title: "❌ Error",
           message: "Something went wrong. Please try again later.",
           buttonText: "Retry",
         });
-        setIsModalVisible(true);
         setIsError(true);
+        setIsModalVisible(true);
       })
-      // setLoading to false after the operation
       .finally(() => {
         setLoading(false);
       });
@@ -76,24 +70,23 @@ const Contact = () => {
 
   return (
     <>
-      {/* Return component */}
       <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
           className="relative flex-[0.75] bg-black-100 p-8 rounded-2xl"
         >
           <div className="flex items-center justify-end space-x-4 absolute top-8 right-4">
-            {Object.keys(publicUrls.socialProfiles).map((socialProfile) => {
-              const profile = publicUrls.socialProfiles[socialProfile];
+            {Object.keys(publicUrls.socialProfiles).map((socialKey) => {
+              const profile = publicUrls.socialProfiles[socialKey];
               return (
                 <div
-                  key={`social_${profile.title}`}
+                  key={socialKey}
                   onClick={() => window.open(profile.link, "_blank")}
                   className="green-pink-gradient lg:w-10 lg:h-10 h-8 w-8 rounded-full flex justify-center items-center cursor-pointer hover:scale-110"
                 >
                   <img
                     src={profile.icon}
-                    alt={`social_${profile.title}`}
+                    alt={profile.title}
                     className="w-4/6 h-4/6 object-contain"
                   />
                 </div>
@@ -129,7 +122,7 @@ const Contact = () => {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="What's your web address?"
+                placeholder="What's your email address?"
                 className="bg-tertiary py-4 px-6 text-white placeholder:text-secondary rounded-lg outline-none border-none font-medium"
                 required
               />
