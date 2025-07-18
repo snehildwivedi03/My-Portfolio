@@ -11,7 +11,7 @@ const Hero = () => {
       <div
         className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        <div>
+        <div className={` z-10`}>
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm <span className="text-[#915EFF]">{personalInfo.name}</span>
           </h1>
