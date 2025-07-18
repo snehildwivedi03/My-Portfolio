@@ -49,8 +49,9 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen">
+    <section className="relative w-full h-screen bg-black">
       <Canvas
+        className="z-0" // 👈 Important: keeps 3D in background
         shadows
         frameloop="always"
         camera={{ position: [20, 3, 5], fov: 25 }}

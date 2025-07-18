@@ -16,11 +16,11 @@ body {
   overflow: auto !important;
 }
 /* tailwind.css or index.css */
-/* html,
+html,
 body,
 #root {
   background-color: #050816 !important;
-} */
+}
 
 .hash-span {
   margin-top: -100px;

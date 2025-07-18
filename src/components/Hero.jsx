@@ -6,10 +6,10 @@ import { personalInfo } from "../constants"; // Make sure this file exports `per
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative w-full h-screen mx-auto bg-black">
       {/* Intro Text */}
       <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-10`}
       >
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
