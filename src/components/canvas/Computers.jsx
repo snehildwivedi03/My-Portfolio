@@ -1,5 +1,5 @@
 // ComputersCanvas.jsx
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
@@ -42,33 +42,41 @@ const ComputersCanvas = () => {
     };
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
-
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
 
   return (
-    <section className="relative w-full h-screen bg-black">
-      <Canvas
-        className="z-0" // 👈 Important: keeps 3D in background
-        shadows
-        frameloop="always"
-        camera={{ position: [20, 3, 5], fov: 25 }}
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
-            enableZoom={false}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
+    <section className="relative w-full h-screen mx-auto">
+      {isMobile ? (
+        <div className="w-full h-full flex justify-center items-center">
+          <img
+            src="/mobileImg.png"
+            alt="Mobile Fallback"
+            className="object-contain w-[80%] h-auto"
           />
-          <Computers isMobile={isMobile} />
-        </Suspense>
-        <Preload all />
-      </Canvas>
+        </div>
+      ) : (
+        <Canvas
+          shadows
+          frameloop="always"
+          camera={{ position: [20, 3, 5], fov: 25 }}
+          gl={{ preserveDrawingBuffer: true }}
+        >
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls
+              enableZoom={false}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={Math.PI / 2}
+            />
+            <Computers isMobile={isMobile} />
+          </Suspense>
+          <Preload all />
+        </Canvas>
+      )}
     </section>
   );
 };
 
-export default ComputersCanvas; // ComputersCanvas.jsx
+export default ComputersCanvas;
