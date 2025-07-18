@@ -25,7 +25,7 @@ const App = () => {
           <Contact />
           {/* <StarsCanvas /> */}
         </div>
-        <HireMe />
+        {/* <HireMe /> */}
       </div>
     </BrowserRouter>
   );
