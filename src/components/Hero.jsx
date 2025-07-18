@@ -1,28 +1,19 @@
-import React, { Suspense } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
-import { motion } from "framer-motion";
-import { personalInfo } from "../constants";
-import CanvasLoader from "./Loader";
+import { personalInfo } from "../constants"; // Make sure this file exports `personalInfo`
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto overflow-hidden">
-      {/* Text & intro section */}
+    <section className="relative w-full h-screen mx-auto">
+      {/* Intro Text */}
       <div
-        className={`${styles.paddingX} absolute top-[100px] sm:top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5 inset-0 z-10`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        {/* Left vertical line with dot */}
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-electric-purple" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </div>
-
-        {/* Headline & subtitle */}
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm{" "}
-            <span className="text-electric-purple">{personalInfo.name}</span>
+            Hi, I'm <span className="text-[#915EFF]">{personalInfo.name}</span>
           </h1>
           <p className={`${styles.heroSubText} text-white-100 mt-2`}>
             {personalInfo.role}, <br className="sm:block hidden" />
@@ -31,15 +22,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Canvas component - behind everything */}
-      <Suspense fallback={<CanvasLoader />}>
-        <div className="absolute top-0 left-0 w-full h-full z-0">
-          <ComputersCanvas />
-        </div>
-      </Suspense>
+      {/* 3D Computer */}
+      <ComputersCanvas />
 
-      {/* Scroll down indicator */}
-      <div className="absolute bottom-10 sm:bottom-5 w-full flex justify-center items-center z-10">
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-32 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
