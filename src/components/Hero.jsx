@@ -40,9 +40,9 @@ const Hero = () => {
           alt=""
           className={`mobile-hero-img ${imageLoaded ? "fade-in" : ""}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: imageLoaded ? 1 : 0 }}
-          transition={{ duration: 1 }}
-          onLoad={() => setImageLoaded(true)}
+          // animate={{ opacity: imageLoaded ? 1 : 0 }}
+          // transition={{ duration: 1 }}
+          // onLoad={() => setImageLoaded(true)}
         />
       ) : (
         <ComputersCanvas />
