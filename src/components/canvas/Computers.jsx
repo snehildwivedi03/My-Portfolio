@@ -50,22 +50,30 @@ const ComputersCanvas = () => {
 
   return (
     <section className="relative w-full h-screen">
-      <Canvas
-        shadows
-        frameloop="always"
-        camera={{ position: [20, 3, 5], fov: 25 }}
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
-            enableZoom={false}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
-          />
-          <Computers isMobile={isMobile} />
-        </Suspense>
-        <Preload all />
-      </Canvas>
+      {isMobile ? (
+        <img
+          src="/mobileImg.png"
+          alt="Mobile View"
+          className="w-full h-full object-contain bg-black"
+        />
+      ) : (
+        <Canvas
+          shadows
+          frameloop="always"
+          camera={{ position: [20, 3, 5], fov: 25 }}
+          gl={{ preserveDrawingBuffer: true }}
+        >
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls
+              enableZoom={false}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={Math.PI / 2}
+            />
+            <Computers isMobile={isMobile} />
+          </Suspense>
+          <Preload all />
+        </Canvas>
+      )}
     </section>
   );
 };
