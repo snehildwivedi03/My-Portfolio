@@ -24,11 +24,6 @@ const Hero = () => {
 
       {/* 3D Computer */}
       <ComputersCanvas />
-      <img
-        src="../../public/mobileImg.png"
-        alt="Mobile Hero"
-        className="mobile-hero-img"
-      />
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-32 w-full flex justify-center items-center">
