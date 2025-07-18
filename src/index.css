@@ -136,6 +136,9 @@ body,
   background-color: transparent;
   z-index: 1; /* Not too high */
 }
+canvas {
+  background-color: #050816 !important; /* fallback color */
+}
 
 /* Add spinner animation */
 @keyframes spin {
