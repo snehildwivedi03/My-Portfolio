@@ -1,0 +1,17 @@
+.mobile-hero-img {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
