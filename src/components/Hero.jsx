@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { styles } from "../../src/index.css";
 import { ComputersCanvas } from "./canvas";
 import { motion } from "framer-motion";
@@ -31,9 +31,11 @@ const Hero = () => {
       </div>
 
       {/* Canvas component - behind everything */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-        <ComputersCanvas />
-      </div>
+      <Suspense>
+        <div className="absolute top-0 left-0 w-full h-full z-0">
+          <ComputersCanvas />
+        </div>
+      </Suspense>
 
       {/* Scroll down indicator */}
       <div className="absolute bottom-10 sm:bottom-5 w-full flex justify-center items-center z-10">

@@ -12,7 +12,9 @@
   scroll-behavior: smooth;
   color-scheme: dark;
 }
-
+body {
+  overflow: auto !important;
+}
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;
@@ -124,6 +126,14 @@
   text-indent: -9999em;
   animation: mulShdSpin 1.1s infinite ease;
   transform: translateZ(0);
+}
+canvas {
+  touch-action: auto !important;
+  pointer-events: none; /* disables canvas from blocking taps */
+  max-width: 100vw;
+  max-height: 100vh;
+  display: block;
+  z-index: 0;
 }
 
 @keyframes mulShdSpin {
