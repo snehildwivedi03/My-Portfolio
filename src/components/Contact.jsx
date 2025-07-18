@@ -68,6 +68,7 @@ const Contact = () => {
         setIsModalVisible(true);
         setIsError(true);
       })
+      // setLoading to false after the operation
       .finally(() => {
         setLoading(false);
       });
