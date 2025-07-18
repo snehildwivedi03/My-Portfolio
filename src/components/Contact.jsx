@@ -27,12 +27,30 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const serviceId = import.meta.env.VITE_APP_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("❌ Missing environment variables in Netlify");
+      setModalContent({
+        title: "Environment Error",
+        message:
+          "Email service configuration is missing. Please contact site owner.",
+        buttonText: "Close",
+      });
+      setIsModalVisible(true);
+      setIsError(true);
+      return;
+    }
+
     setLoading(true);
 
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: form.name,
           to_name: personalInfo.fullName,
@@ -41,29 +59,28 @@ const Contact = () => {
           message: form.message,
           reply_to: form.email,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        publicKey
       )
       .then(() => {
         setModalContent({
           title: "✅ Message Sent!",
-          message: "Thanks for contacting me. I'll get back to you shortly.",
+          message: "Thanks for reaching out! I'll reply soon.",
           buttonText: "Close",
         });
+        setForm({ name: "", email: "", message: "" });
         setIsError(false);
-        setIsModalVisible(true);
-        setForm({ name: "", email: "", message: "" }); // Reset form
       })
       .catch((error) => {
-        console.error("EmailJS Error:", error);
+        console.error("Email send error:", error);
         setModalContent({
-          title: "❌ Error",
+          title: "❌ Failed to Send",
           message: "Something went wrong. Please try again later.",
           buttonText: "Retry",
         });
         setIsError(true);
-        setIsModalVisible(true);
       })
       .finally(() => {
+        setIsModalVisible(true);
         setLoading(false);
       });
   };
@@ -76,11 +93,11 @@ const Contact = () => {
           className="relative flex-[0.75] bg-black-100 p-8 rounded-2xl"
         >
           <div className="flex items-center justify-end space-x-4 absolute top-8 right-4">
-            {Object.keys(publicUrls.socialProfiles).map((socialKey) => {
-              const profile = publicUrls.socialProfiles[socialKey];
+            {Object.keys(publicUrls.socialProfiles).map((key) => {
+              const profile = publicUrls.socialProfiles[key];
               return (
                 <div
-                  key={socialKey}
+                  key={key}
                   onClick={() => window.open(profile.link, "_blank")}
                   className="green-pink-gradient lg:w-10 lg:h-10 h-8 w-8 rounded-full flex justify-center items-center cursor-pointer hover:scale-110"
                 >
@@ -109,7 +126,7 @@ const Contact = () => {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="What's your good name?"
+                placeholder="What's your name?"
                 className="bg-tertiary py-4 px-6 text-white placeholder:text-secondary rounded-lg outline-none border-none font-medium"
                 required
               />
@@ -122,7 +139,7 @@ const Contact = () => {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="What's your email address?"
+                placeholder="What's your email?"
                 className="bg-tertiary py-4 px-6 text-white placeholder:text-secondary rounded-lg outline-none border-none font-medium"
                 required
               />
@@ -144,6 +161,7 @@ const Contact = () => {
             <button
               type="submit"
               className="bg-tertiary py-3 px-8 rounded-xl outline-none text-white font-bold w-fit shadow-md shadow-primary"
+              disabled={loading}
             >
               {loading ? "Sending..." : "Send"}
             </button>
