@@ -14,6 +14,18 @@ module.exports = {
         "white-100": "#f3f3f3",
         "electric-purple": "#915eff",
       },
+      keyframes: {
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px) translateX(-50%)",
+          },
+          "100%": { opacity: "1", transform: "translateY(0) translateX(-50%)" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 1.5s ease-out forwards",
+      },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
       },

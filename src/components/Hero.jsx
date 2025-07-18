@@ -2,17 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
-import { personalInfo } from "../constants";
-import { isMobile } from "react-device-detect"; // Optional: use your own logic if needed
+import { personalInfo } from "../constants"; // Make sure this file exports `personalInfo`
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto bg-black overflow-hidden">
+    <section className="relative w-full h-screen mx-auto bg-black">
       {/* Intro Text */}
       <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-10`}
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        <div>
+        <div className={` z-10`}>
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm <span className="text-[#915EFF]">{personalInfo.name}</span>
           </h1>
@@ -23,22 +22,16 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Conditional 3D Model or Mobile Image */}
-      {isMobile ? (
-        <motion.img
-          src="/mobileImg.webp"
-          alt="Mobile View"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 20 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[90%] h-auto object-contain z-0"
-        />
-      ) : (
-        <ComputersCanvas />
-      )}
+      {/* 3D Computer */}
+      <ComputersCanvas />
+      <img
+        src="/mobileImg.webp"
+        alt="Mobile Hero"
+        className="mobile-hero-img"
+      />
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-32 w-full flex justify-center items-center z-10">
+      <div className="absolute bottom-32 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div

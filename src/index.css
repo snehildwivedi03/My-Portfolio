@@ -154,6 +154,37 @@ canvas {
   display: block;
   z-index: 0;
 }
+/* index.css or Hero.css */
+.mobile-hero-img {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  animation: fadeInImage 1.5s ease-out forwards;
+  opacity: 0;
+  display: none;
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Show only on small screens */
+@media (max-width: 768px) {
+  .mobile-hero-img {
+    display: block;
+  }
+}
 
 @keyframes mulShdSpin {
   0%,
