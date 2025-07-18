@@ -17,9 +17,11 @@ body {
 }
 /* tailwind.css or index.css */
 html,
-body {
-  background-color: #050816;
+body,
+#root {
+  background-color: #050816 !important;
 }
+
 .hash-span {
   margin-top: -100px;
   padding-bottom: 100px;
