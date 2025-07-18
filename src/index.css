@@ -129,7 +129,6 @@ body {
 }
 canvas {
   touch-action: auto !important;
-  pointer-events: none; /* disables canvas from blocking taps */
   max-width: 100vw;
   max-height: 100vh;
   display: block;
