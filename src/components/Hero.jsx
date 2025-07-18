@@ -25,7 +25,7 @@ const Hero = () => {
       {/* 3D Computer */}
       <ComputersCanvas />
       <img
-        src="/mobileImg.webp"
+        src="../../public/mobileImg.png"
         alt="Mobile Hero"
         className="mobile-hero-img"
       />
