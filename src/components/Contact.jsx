@@ -52,7 +52,7 @@ const Contact = () => {
       );
 
       setModalContent({
-        title: "✅ Message Sent!",
+        title: "Message Sent!",
         message: "Thanks for contacting me. I’ll reply as soon as I can.",
         buttonText: "Close",
       });
