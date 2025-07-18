@@ -1,20 +1,23 @@
 import React from "react";
-import { styles } from "../styles";
+import { styles } from "../../src/index.css";
 import { ComputersCanvas } from "./canvas";
 import { motion } from "framer-motion";
 import { personalInfo } from "../constants";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative w-full h-screen mx-auto overflow-hidden">
+      {/* Text & intro section */}
       <div
-        className={`${styles.paddingX} absolute top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5 inset-0`}
+        className={`${styles.paddingX} absolute top-[100px] sm:top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5 inset-0 z-10`}
       >
+        {/* Left vertical line with dot */}
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-electric-purple" />
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
+        {/* Headline & subtitle */}
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm{" "}
@@ -27,9 +30,13 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
+      {/* Canvas component - behind everything */}
+      <div className="absolute top-0 left-0 w-full h-full z-0">
+        <ComputersCanvas />
+      </div>
 
-      <div className="absolute xs:bottom-2 bottom-12 w-full flex justify-center items-center">
+      {/* Scroll down indicator */}
+      <div className="absolute bottom-10 sm:bottom-5 w-full flex justify-center items-center z-10">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
