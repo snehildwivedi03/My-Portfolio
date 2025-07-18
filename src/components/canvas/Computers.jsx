@@ -54,6 +54,7 @@ const ComputersCanvas = () => {
         frameloop="always"
         camera={{ position: [20, 3, 5], fov: 25 }}
         gl={{ preserveDrawingBuffer: true }}
+        // style={{ backgroundColor: "#050816" }} // Set background color
       >
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
