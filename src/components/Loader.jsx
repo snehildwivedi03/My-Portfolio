@@ -2,23 +2,30 @@ import { Html, useProgress } from "@react-three/drei";
 
 const CanvasLoader = () => {
   const { progress } = useProgress();
+
   return (
     <Html
-      as="div"
       center
+      fullscreen
       style={{
+        backgroundColor: "#050816", // Dark background to avoid white flash
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        marginTop: 50,
+        width: "100vw",
+        height: "100vh",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 50,
       }}
     >
       <span className="canvas-loader"></span>
       <p
         style={{
           fontSize: 14,
-          color: "#888",
+          color: "#fff",
           fontWeight: 800,
           marginTop: 40,
         }}
