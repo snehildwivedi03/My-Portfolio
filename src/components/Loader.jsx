@@ -1,18 +1,7 @@
 import { Html, useProgress } from "@react-three/drei";
-import { useEffect } from "react";
 
-const CanvasLoader = ({ onFinish }) => {
+const CanvasLoader = () => {
   const { progress } = useProgress();
-
-  useEffect(() => {
-    if (progress >= 100 && onFinish) {
-      const timeout = setTimeout(() => {
-        onFinish();
-      }, 300); // give a smooth transition
-      return () => clearTimeout(timeout);
-    }
-  }, [progress, onFinish]);
-
   return (
     <Html
       as="div"

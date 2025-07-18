@@ -1,3 +1,4 @@
+// ComputersCanvas.jsx
 import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
@@ -31,7 +32,6 @@ const Computers = ({ isMobile }) => {
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [showCanvas, setShowCanvas] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -50,27 +50,24 @@ const ComputersCanvas = () => {
 
   return (
     <section className="relative w-full h-screen">
-      {!showCanvas && <CanvasLoader onFinish={() => setShowCanvas(true)} />}
-      {showCanvas && (
-        <Canvas
-          shadows
-          frameloop="always"
-          camera={{ position: [20, 3, 5], fov: 25 }}
-          gl={{ preserveDrawingBuffer: true }}
-        >
-          <Suspense fallback={null}>
-            <OrbitControls
-              enableZoom={false}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
-            />
-            <Computers isMobile={isMobile} />
-          </Suspense>
-          <Preload all />
-        </Canvas>
-      )}
+      <Canvas
+        shadows
+        frameloop="always"
+        camera={{ position: [20, 3, 5], fov: 25 }}
+        gl={{ preserveDrawingBuffer: true }}
+      >
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
+          />
+          <Computers isMobile={isMobile} />
+        </Suspense>
+        <Preload all />
+      </Canvas>
     </section>
   );
 };
 
-export default ComputersCanvas;
+export default ComputersCanvas; // ComputersCanvas.jsx
