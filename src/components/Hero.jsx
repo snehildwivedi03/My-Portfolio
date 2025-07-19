@@ -17,10 +17,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen mx-auto bg-black overflow-hidden">
+    <section className="relative w-full min-h-screen mx-auto bg-black overflow-hidden flex flex-col items-center justify-start">
       {/* Intro Text */}
       <div
-        className={`absolute inset-0 top-[60px] sm:top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-20`}
+        className={`relative max-w-7xl mx-auto ${styles.paddingX} pt-20 sm:pt-36 flex flex-col items-center text-center z-20`}
       >
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
@@ -37,11 +37,11 @@ const Hero = () => {
       {isMobile ? (
         <motion.img
           src="/mobileImg.png"
-          alt="Mobile Illustration"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          alt="Mobile Hero Image"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="absolute bottom-[60px] left-1/2 transform -translate-x-1/2 w-[70%] max-w-xs z-10"
+          className="w-[70%] max-w-xs mt-10 sm:mt-16"
         />
       ) : (
         <ComputersCanvas />
