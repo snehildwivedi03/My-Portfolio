@@ -20,7 +20,7 @@ const Hero = () => {
     <section className="relative w-full h-screen mx-auto bg-black overflow-hidden">
       {/* Intro Text */}
       <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-20`}
+        className={`absolute inset-0 top-[60px] sm:top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5 z-20`}
       >
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
@@ -41,7 +41,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 max-w-xs z-10"
+          className="absolute bottom-[60px] left-1/2 transform -translate-x-1/2 w-[70%] max-w-xs z-10"
         />
       ) : (
         <ComputersCanvas />
