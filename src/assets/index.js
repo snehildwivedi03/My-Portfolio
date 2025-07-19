@@ -9,6 +9,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 import demo from "./demo.png";
 import leetcode from "./leetcode.png";
+import mobileImg from "../../public/mobileImg.png";
 import gfg from "./gfg.png";
 
 import css from "./tech/css.png";
@@ -69,6 +70,7 @@ export {
   newgen,
   skillrisers,
   leetcode,
+  mobileImg,
   proximus,
   aptihealthWeb,
   aptihealthApp,

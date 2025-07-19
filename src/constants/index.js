@@ -2,6 +2,7 @@ import {
   mobile,
   backend,
   creator,
+  mobileImg,
   web,
   javascript,
   typescript,
@@ -179,7 +180,7 @@ const experiences = [
   {
     title: "GeeksForGeeks Profile",
     company_name: "GeeksForGeeks",
-    company_website: "https://leetcode.com/u/snehildwivedi03/",
+    company_website: "https://www.geeksforgeeks.org/user/snehil01dwivedi/",
     icon: gfg, // Replace with actual icon variable if needed
     iconBg: "#D1E8FF",
     date: "Present",

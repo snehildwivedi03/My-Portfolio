@@ -52,7 +52,7 @@ const ComputersCanvas = () => {
     <section className="relative w-full h-screen z-0">
       {isMobile ? (
         <img
-          src="../../../public/mobileImg.png"
+          src="/mobileImg.png"
           alt="Mobile View"
           className="w-full h-full object-contain bg-black"
         />
