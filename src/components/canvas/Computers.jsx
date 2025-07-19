@@ -1,7 +1,8 @@
 // ComputersCanvas.jsx
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
@@ -42,22 +43,24 @@ const ComputersCanvas = () => {
     };
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
-
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
 
   return (
-    <section className="relative w-full h-screen z-0">
+    <section className="relative w-full h-screen mx-auto">
       {isMobile ? (
-        <img
-          src="/mobileImg.png"
-          alt="Mobile View"
-          className="w-full h-full object-contain bg-black"
-        />
+        <div className="w-full h-full flex justify-center items-center">
+          <img
+            src="/mobileImg.png"
+            alt="Mobile Fallback"
+            className="object-contain w-[80%] h-auto"
+          />
+        </div>
       ) : (
         <Canvas
+          style={{ cursor: "grab" }} // 👈 add this
           shadows
           frameloop="always"
           camera={{ position: [20, 3, 5], fov: 25 }}
@@ -66,9 +69,13 @@ const ComputersCanvas = () => {
           <Suspense fallback={<CanvasLoader />}>
             <OrbitControls
               enableZoom={false}
+              enablePan={false}
+              enableRotate={true}
+              autoRotate={false}
               maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
+              minPolarAngle={0}
             />
+
             <Computers isMobile={isMobile} />
           </Suspense>
           <Preload all />
@@ -78,4 +85,4 @@ const ComputersCanvas = () => {
   );
 };
 
-export default ComputersCanvas; // ComputersCanvas.jsx
+export default ComputersCanvas;

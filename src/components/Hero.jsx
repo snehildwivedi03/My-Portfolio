@@ -17,25 +17,56 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero-section">
-      <div className="hero-content">
-        <h1 className="hero-heading">
-          Hi, I'm <span className="hero-highlight">Snehil</span>
-        </h1>
-        <p className="hero-subtitle">
-          Software Developer, Learning and <br className="sm:block hidden" />
-          Building Projects
-        </p>
+    <section className="relative w-full h-screen mx-auto bg-black overflow-hidden">
+      {/* Intro Text */}
+      <div
+        className={`absolute inset-0 ${
+          isMobile ? "top-[60px]" : "top-[120px]"
+        } max-w-7xl mx-auto ${
+          styles.paddingX
+        } flex flex-row items-start gap-5 z-20`}
+      >
+        <div>
+          <h1 className={`${styles.heroHeadText} text-white`}>
+            Hi, I'm <span className="text-[#915EFF]">{personalInfo.name}</span>
+          </h1>
+          <p className={`${styles.heroSubText} text-white-100 mt-2`}>
+            {personalInfo.role}, <br className="sm:block hidden" />
+            Learning and Building Projects
+          </p>
+        </div>
       </div>
 
-      <motion.img
-        src="/mobileImg.png"
-        alt="Coding illustration"
-        className="hero-image"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      />
+      {/* Show either image (mobile) or 3D model (desktop) */}
+      {isMobile ? (
+        <motion.img
+          src="/mobileImg.webp"
+          alt="Mobile Illustration"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute bottom-[-40px] sm:bottom-[-20px] left-1/2 transform -translate-x-1/2 w-[70%] max-w-[250px] z-10"
+        />
+      ) : (
+        <ComputersCanvas />
+      )}
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-20 w-full flex justify-center items-center z-20">
+        <a href="#about">
+          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+            <motion.div
+              animate={{ y: [0, 24, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+              className="w-3 h-3 rounded-full bg-secondary mb-1"
+            />
+          </div>
+        </a>
+      </div>
     </section>
   );
 };
